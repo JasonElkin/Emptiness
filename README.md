@@ -1,6 +1,8 @@
 <img src="docs/img/logo.svg" width="200" height="200" align="right"/>
 
 # Emptiness
+[![.NET](https://github.com/JasonElkin/Emptiness/actions/workflows/build.yml/badge.svg)](https://github.com/JasonElkin/Emptiness/actions/workflows/build.yml)
+
  Nullable Property Value Converters for value types in Umbraco.
 
 ### Why would I want that?
