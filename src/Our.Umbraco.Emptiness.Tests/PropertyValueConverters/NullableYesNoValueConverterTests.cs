@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using Our.Umbraco.Emptiness;
+using Our.Umbraco.Emptiness.PropertyValueConverters;
 
 namespace Our.Umbraco.Nothingness.Tests.PropertyValueConverters
 {
