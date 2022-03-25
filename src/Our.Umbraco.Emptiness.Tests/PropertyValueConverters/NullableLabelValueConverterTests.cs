@@ -1,6 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
-using Our.Umbraco.Emptiness;
+using Our.Umbraco.Emptiness.PropertyValueConverters;
 using System;
 using System.Linq;
 using Umbraco.Cms.Core.Models;

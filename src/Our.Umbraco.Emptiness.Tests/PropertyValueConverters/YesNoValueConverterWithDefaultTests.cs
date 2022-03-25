@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
-using Our.Umbraco.Emptiness;
+using Our.Umbraco.Emptiness.PropertyValueConverters;
+using System;
+using System.Linq;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
@@ -43,7 +43,7 @@ namespace Our.Umbraco.Nothingness.Tests.PropertyValueConverters
                 Mock.Of<IPublishedModelFactory>(),
                 mockPublishedContentTypeFactory.Object);
 
-            var pvc = new YesNoValueDefaultConverter();
+            var pvc = new YesNoDefaultConverter();
 
             var converted = pvc.ConvertSourceToIntermediate(null, publishedPropType, value, false);
 
