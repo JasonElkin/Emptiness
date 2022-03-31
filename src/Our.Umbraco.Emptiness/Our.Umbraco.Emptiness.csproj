@@ -11,8 +11,10 @@
 		<PackageIconUrl>https://raw.githubusercontent.com/JasonElkin/Emptiness/main/docs/img/logo.png</PackageIconUrl>
 		<RepositoryUrl>https://github.com/JasonElkin/Emptinesss</RepositoryUrl>
 		<RepositoryType>Git</RepositoryType>
-		<PackageTags>umbraco converters models-builder</PackageTags>
+		<PackageTags>Umbraco;Property Value Converters;ModelsBuilder</PackageTags>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<IncludeSymbols>true</IncludeSymbols>
+		<IncludeSource>true</IncludeSource>
 	</PropertyGroup>
 
 	<ItemGroup>
