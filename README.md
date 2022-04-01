@@ -2,8 +2,15 @@
 
 # Emptiness
 [![.NET](https://github.com/JasonElkin/Emptiness/actions/workflows/build.yml/badge.svg)](https://github.com/JasonElkin/Emptiness/actions/workflows/build.yml)
+[![Nuget](https://img.shields.io/nuget/v/Our.Umbraco.Emptiness)](https://www.nuget.org/packages/Our.Umbraco.Emptiness/)
 
  Nullable Property Value Converters for value types in Umbraco.
+
+ ### Install it:
+
+ ```
+ dotnet add package Our.Umbraco.Emptiness
+ ```
 
 ### Why would I want that?
 
