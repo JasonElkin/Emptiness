@@ -15,6 +15,8 @@ namespace Our.Umbraco.Emptiness.Config
 
         public EmptinessCollectionBuilder InsertIfEnabled<T>() where T : IEmptinessPropertyValueConverter
         {
+            // IPropertyValueConverters are Type Scanned and added automatically
+            builder.Remove<T>();
             if (settings.IsEnabled<T>())
             {
                 builder.Insert<T>();

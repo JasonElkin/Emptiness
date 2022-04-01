@@ -13,12 +13,18 @@ If an editor hasn't set a value for a "value type" property, then these converte
 
 ### Nullable Property Value Converters
 
-The following are enabled by default, and all return null if an editor has not entered a value.
+Return null if an editor has not entered a value.
+
+#### Enabled by default:
 
  - NullableDatePickerConverter
  - NullableDecimalConverter
  - NullableIntegerConverter
+
+#### Disabled by default:
+
  - NullableLabelConverter
+
 ### Property Value Converters for Toggles (True/False)
 Though they don't have a null state in the UI, they can be empty if:
 
@@ -31,6 +37,43 @@ Enabled by default. This converter returns the "Initial State" (default) value t
 
 #### NullableYesNoConverter
 Disabled by default.
+
+## Configuration
+
+You can configure Emptiness with appsettings.json like this:
+
+```json
+  "Emptiness": {
+    "EnabledConverters": [
+      "NullableDatePickerConverter",
+      "NullableDecimalConverter",
+      "NullableIntegerConverter"
+    ],
+    "TrueFalseConverter": "Nullable"
+  }
+```
+This is the default configuration.
+
+### `EnabledConverters`
+If provided, enables only the PVCs listed.
+
+Property Value Converter names:
+
+- `NullableDatePickerConverter`  
+- `NullableDecimalConverter`  
+- `NullableIntegerConverter`  
+- `NullableLabelConverter`  
+
+### `TrueFalseConverter`
+
+Determines the True/False (Yes/No) conveter to use for booleans.
+
+Options:
+
+ - `Core` - use Umbraco's built in converter.
+ - `DefaultValue` - use the YesNoDefaultConverter
+ - `Nullable` - use the NullableYesNoConverter
+
 
 ## License(s) & Copyright
 

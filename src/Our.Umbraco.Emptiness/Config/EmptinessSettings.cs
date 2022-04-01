@@ -7,14 +7,9 @@ namespace Our.Umbraco.Emptiness.Config
     {
         public const string SectionName = "Emptiness";
 
-        public string[] EnabledConverters { get; set; } = new[] {
-            nameof(NullableDatePickerConverter),
-            nameof(NullableDecimalConverter),
-            nameof(NullableIntegerConverter),
-            nameof(NullableLabelConverter),
-        };
+        public string[]? EnabledConverters { get; set; }
 
-        public TrueFalseMode TrueFalseConverter { get; set; } = TrueFalseMode.DefaultValue;
+        public TrueFalseMode TrueFalseConverter { get; set; }
 
         public bool IsEnabled<T>() where T : IEmptinessPropertyValueConverter
         {
@@ -29,8 +24,18 @@ namespace Our.Umbraco.Emptiness.Config
                 return true;
             }
 
-            return EnabledConverters.Contains(typeof(T).Name);
+            return EnabledConverters?.Contains(typeof(T).Name) == true;
         }
+
+        public static EmptinessSettings DefaultSettings() => new()
+        {
+            EnabledConverters = new[] {
+                nameof(NullableDatePickerConverter),
+                nameof(NullableDecimalConverter),
+                nameof(NullableIntegerConverter),
+            },
+            TrueFalseConverter = TrueFalseMode.DefaultValue
+        };
     }
 
     public enum TrueFalseMode
