@@ -49,7 +49,7 @@ You can configure Emptiness with appsettings.json like this:
       "NullableDecimalConverter",
       "NullableIntegerConverter"
     ],
-    "TrueFalseConverter": "Nullable"
+    "TrueFalseConverter": "DefaultValue"
   }
 ```
 This is the default configuration.
