@@ -11,7 +11,7 @@ namespace Our.Umbraco.Emptiness
         public void Compose(IUmbracoBuilder builder)
         {
             var settings = builder.Config.GetSection(EmptinessSettings.SectionName)
-                .Get<EmptinessSettings>() ?? new();
+                .Get<EmptinessSettings>() ?? EmptinessSettings.DefaultSettings;
 
             builder.PvcCollectionBuilder(settings)
                 .InsertIfEnabled<NullableDatePickerConverter>()

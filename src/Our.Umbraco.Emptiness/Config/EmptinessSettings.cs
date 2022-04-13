@@ -27,7 +27,7 @@ namespace Our.Umbraco.Emptiness.Config
             return EnabledConverters?.Contains(typeof(T).Name) == true;
         }
 
-        public static EmptinessSettings DefaultSettings() => new()
+        public static EmptinessSettings DefaultSettings => new()
         {
             EnabledConverters = new[] {
                 nameof(NullableDatePickerConverter),
