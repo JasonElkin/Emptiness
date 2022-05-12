@@ -7,14 +7,16 @@ using Umbraco.Extensions;
 
 namespace Our.Umbraco.Emptiness.PropertyValueConverters
 {
-    public class NullableDatePickerConverter : DatePickerValueConverter, IEmptinessPropertyValueConverter
+    public class NullableDatePickerConverter : IPropertyValueConverter
     {
-        public override Type GetPropertyValueType(IPublishedPropertyType propertyType) => typeof(DateTime?);
+        readonly IPropertyValueConverter coreConverter = new DatePickerValueConverter();
 
-        public override object? ConvertSourceToIntermediate(
+        public Type GetPropertyValueType(IPublishedPropertyType propertyType) => typeof(DateTime?);
+
+        public object? ConvertSourceToIntermediate(
             IPublishedElement owner,
             IPublishedPropertyType propertyType,
-            object source,
+            object? source,
             bool preview)
         {
 
@@ -27,11 +29,11 @@ namespace Our.Umbraco.Emptiness.PropertyValueConverters
             return source as DateTime?;
         }
 
-        public override object? ConvertIntermediateToXPath(
+        public object? ConvertIntermediateToXPath(
             IPublishedElement owner,
             IPublishedPropertyType propertyType,
             PropertyCacheLevel referenceCacheLevel,
-            object inter,
+            object? inter,
             bool preview)
         {
             var interDate = inter as DateTime?;
@@ -42,6 +44,30 @@ namespace Our.Umbraco.Emptiness.PropertyValueConverters
             }
 
             return XmlConvert.ToString(interDate.Value, XmlDateTimeSerializationMode.Unspecified);
+        }
+
+        public bool IsConverter(IPublishedPropertyType propertyType)
+            => coreConverter.IsConverter(propertyType);
+
+        public bool? IsValue(object? value, PropertyValueLevel level)
+            => coreConverter.IsValue(value, level);
+
+        public PropertyCacheLevel GetPropertyCacheLevel(IPublishedPropertyType propertyType)
+            => coreConverter.GetPropertyCacheLevel(propertyType);
+
+        public object? ConvertIntermediateToObject(
+            IPublishedElement owner,
+            IPublishedPropertyType propertyType,
+            PropertyCacheLevel referenceCacheLevel,
+            object? inter,
+            bool preview)
+        {
+            return coreConverter.ConvertIntermediateToObject(
+                owner,
+                propertyType,
+                referenceCacheLevel,
+                inter,
+                preview);
         }
     }
 }

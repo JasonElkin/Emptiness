@@ -1,11 +1,49 @@
-﻿using Umbraco.Cms.Core.Models.PublishedContent;
+﻿using System;
+using Umbraco.Cms.Core.Models.PublishedContent;
+using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
 
 namespace Our.Umbraco.Emptiness.PropertyValueConverters
 {
-    public class NullableYesNoConverter : YesNoValueConverter, IEmptinessPropertyValueConverter
+    public class NullableYesNoConverter : IPropertyValueConverter
     {
-        public override object? ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object source, bool preview)
+        readonly IPropertyValueConverter coreConverter = new YesNoValueConverter();
+
+        public object? ConvertIntermediateToObject(
+            IPublishedElement owner,
+            IPublishedPropertyType propertyType,
+            PropertyCacheLevel referenceCacheLevel,
+            object? inter,
+            bool preview)
+        {
+            return coreConverter.ConvertIntermediateToObject(
+                owner,
+                propertyType,
+                referenceCacheLevel,
+                inter,
+                preview);
+        }
+
+        public object? ConvertIntermediateToXPath(
+            IPublishedElement owner,
+            IPublishedPropertyType propertyType,
+            PropertyCacheLevel referenceCacheLevel,
+            object? inter,
+            bool preview)
+        {
+            return coreConverter.ConvertIntermediateToXPath(
+                owner,
+                propertyType,
+                referenceCacheLevel,
+                inter,
+                preview);
+        }
+
+        public object? ConvertSourceToIntermediate(
+            IPublishedElement owner,
+            IPublishedPropertyType propertyType,
+            object? source,
+            bool preview)
         {
             // in xml a boolean is: string
             // in the database a boolean is: string "1" or "0" or empty
@@ -20,7 +58,7 @@ namespace Our.Umbraco.Emptiness.PropertyValueConverters
                 if (s == "1")
                     return true;
 
-                if(bool.TryParse(s, out bool result))
+                if (bool.TryParse(s, out bool result))
                     return result;
 
                 return null;
@@ -56,5 +94,17 @@ namespace Our.Umbraco.Emptiness.PropertyValueConverters
 
             return null;
         }
+
+        public PropertyCacheLevel GetPropertyCacheLevel(IPublishedPropertyType propertyType)
+            => coreConverter.GetPropertyCacheLevel(propertyType);
+
+        public Type GetPropertyValueType(IPublishedPropertyType propertyType)
+            => coreConverter.GetPropertyValueType(propertyType);
+
+        public bool IsConverter(IPublishedPropertyType propertyType)
+            => coreConverter.IsConverter(propertyType);
+
+        public bool? IsValue(object? value, PropertyValueLevel level)
+            => coreConverter.IsValue(value, level);
     }
 }

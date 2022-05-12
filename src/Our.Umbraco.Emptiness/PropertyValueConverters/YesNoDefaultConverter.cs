@@ -4,9 +4,9 @@ using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
 
 namespace Our.Umbraco.Emptiness.PropertyValueConverters
 {
-    public class YesNoDefaultConverter : YesNoValueConverter, IEmptinessPropertyValueConverter
+    public class YesNoDefaultConverter : YesNoValueConverter
     {
-        public override object ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object source, bool preview)
+        public override object ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object? source, bool preview)
         {
             // in xml a boolean is: string
             // in the database a boolean is: string "1" or "0" or empty
@@ -55,7 +55,7 @@ namespace Our.Umbraco.Emptiness.PropertyValueConverters
 
             var config = propertyType.DataType.ConfigurationAs<TrueFalseConfiguration>();
 
-            var defaultValue = config.Default;
+            var defaultValue = config?.Default ?? false;
 
             return defaultValue;
         }

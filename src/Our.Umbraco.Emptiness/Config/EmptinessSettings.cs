@@ -1,5 +1,6 @@
-﻿using Our.Umbraco.Emptiness.PropertyValueConverters;
-using System.Linq;
+﻿using System.Linq;
+using Our.Umbraco.Emptiness.PropertyValueConverters;
+using Umbraco.Cms.Core.PropertyEditors;
 
 namespace Our.Umbraco.Emptiness.Config
 {
@@ -11,7 +12,7 @@ namespace Our.Umbraco.Emptiness.Config
 
         public TrueFalseMode TrueFalseConverter { get; set; }
 
-        public bool IsEnabled<T>() where T : IEmptinessPropertyValueConverter
+        public bool IsEnabled<T>() where T : IPropertyValueConverter
         {
             var type = typeof(T);
 

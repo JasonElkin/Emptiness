@@ -6,12 +6,14 @@ using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
 
 namespace Our.Umbraco.Emptiness.PropertyValueConverters
 {
-    public class NullableLabelConverter : LabelValueConverter, IEmptinessPropertyValueConverter
+    public class NullableLabelConverter : IPropertyValueConverter
     {
-        public override Type GetPropertyValueType(IPublishedPropertyType propertyType)
+        readonly IPropertyValueConverter coreConverter = new LabelValueConverter();
+
+        public Type GetPropertyValueType(IPublishedPropertyType propertyType)
         {
             var valueType = ConfigurationEditor.ConfigurationAs<LabelConfiguration>(propertyType.DataType.Configuration);
-            return valueType.ValueType switch
+            return valueType?.ValueType switch
             {
                 ValueTypes.DateTime or ValueTypes.Date => typeof(DateTime?),
                 ValueTypes.Time => typeof(TimeSpan?),
@@ -22,11 +24,11 @@ namespace Our.Umbraco.Emptiness.PropertyValueConverters
             };
         }
 
-        public override object? ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object source, bool preview)
+        public object? ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object? source, bool preview)
         {
             var valueType = ConfigurationEditor.ConfigurationAs<LabelConfiguration>(propertyType.DataType.Configuration);
 
-            switch (valueType.ValueType)
+            switch (valueType?.ValueType)
             {
                 case ValueTypes.DateTime:
                 case ValueTypes.Date:
@@ -60,6 +62,45 @@ namespace Our.Umbraco.Emptiness.PropertyValueConverters
                 default: // everything else is a string
                     return source?.ToString() ?? string.Empty;
             }
+        }
+
+        public bool IsConverter(IPublishedPropertyType propertyType)
+            => coreConverter.IsConverter(propertyType);
+
+        public bool? IsValue(object? value, PropertyValueLevel level)
+            => coreConverter.IsValue(value, level);
+
+        public PropertyCacheLevel GetPropertyCacheLevel(IPublishedPropertyType propertyType)
+            => coreConverter.GetPropertyCacheLevel(propertyType);
+
+        public object? ConvertIntermediateToObject(
+            IPublishedElement owner,
+            IPublishedPropertyType propertyType,
+            PropertyCacheLevel referenceCacheLevel,
+            object? inter,
+            bool preview)
+        {
+            return coreConverter.ConvertIntermediateToObject(
+                owner,
+                propertyType,
+                referenceCacheLevel,
+                inter,
+                preview);
+        }
+
+        public object? ConvertIntermediateToXPath(
+            IPublishedElement owner,
+            IPublishedPropertyType propertyType,
+            PropertyCacheLevel referenceCacheLevel,
+            object? inter,
+            bool preview)
+        {
+            return coreConverter.ConvertIntermediateToXPath(
+                owner,
+                propertyType,
+                referenceCacheLevel,
+                inter,
+                preview);
         }
     }
 }

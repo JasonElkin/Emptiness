@@ -1,4 +1,5 @@
-﻿using Umbraco.Cms.Core.DependencyInjection;
+﻿using System;
+using Umbraco.Cms.Core.DependencyInjection;
 
 namespace Our.Umbraco.Emptiness.Config
 {
@@ -6,7 +7,14 @@ namespace Our.Umbraco.Emptiness.Config
     {
         public static EmptinessCollectionBuilder PvcCollectionBuilder(this IUmbracoBuilder builder, EmptinessSettings settings)
         {
-            return new EmptinessCollectionBuilder(builder.PropertyValueConverters(), settings);
+            var collectionBuilder = builder.PropertyValueConverters();
+
+            if (collectionBuilder is null)
+            {
+                throw new NullReferenceException("The IUmbracoBuilder must have a PropertyValueConverterCollectionBuilder");
+            }
+
+            return new EmptinessCollectionBuilder(collectionBuilder, settings);
         }
     }
 }
