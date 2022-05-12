@@ -1,6 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<Description>Nullable Property Value Converters for value types in Umbraco</Description>
 		<Authors>Jason Elkin</Authors>
@@ -9,6 +9,7 @@
 		<PackageProjectUrl>https://github.com/JasonElkin/Emptinesss</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageIconUrl>https://raw.githubusercontent.com/JasonElkin/Emptiness/main/docs/img/logo.png</PackageIconUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/JasonElkin/Emptinesss</RepositoryUrl>
 		<RepositoryType>Git</RepositoryType>
 		<PackageTags>Umbraco;Property Value Converters;ModelsBuilder</PackageTags>
@@ -24,6 +25,7 @@
 
 	<ItemGroup>
 		<None Update="icon.png" Pack="true" PackagePath="\" />
+		<None Include="..\..\README.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
 
 </Project>
