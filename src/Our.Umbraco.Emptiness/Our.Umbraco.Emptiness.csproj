@@ -20,12 +20,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Umbraco.Cms.Core" Version="10.0.0-rc1" />
+		<PackageReference Include="Umbraco.Cms.Core" Version="10.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<None Update="icon.png" Pack="true" PackagePath="\" />
-		<None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 </Project>

@@ -9,11 +9,6 @@ namespace Our.Umbraco.Emptiness.Config
         {
             var collectionBuilder = builder.PropertyValueConverters();
 
-            if (collectionBuilder is null)
-            {
-                throw new NullReferenceException("The IUmbracoBuilder must have a PropertyValueConverterCollectionBuilder");
-            }
-
             return new EmptinessCollectionBuilder(collectionBuilder, settings);
         }
     }
