@@ -1,5 +1,3 @@
-<img src="docs/img/logo.svg" width="200" height="200" align="right"/>
-
 # Emptiness
 [![.NET](https://github.com/JasonElkin/Emptiness/actions/workflows/build.yml/badge.svg)](https://github.com/JasonElkin/Emptiness/actions/workflows/build.yml)
 [![Nuget](https://img.shields.io/nuget/v/Our.Umbraco.Emptiness)](https://www.nuget.org/packages/Our.Umbraco.Emptiness/)
@@ -88,4 +86,4 @@ Copyright &copy; 2022 Jason Elkin
 
 Licensed under the [MIT License](LICENSE.md).
 
- <a href='https://www.freepik.com/vectors/crate'>Crate image created by vectorpocket - www.freepik.com</a>
+Crate image created by vectorpocket - [www.freepik.com](https://www.freepik.com/vectors/crate)
