@@ -6,11 +6,11 @@
 		<Authors>Jason Elkin</Authors>
 		<Copyright>Copyright © 2022 Jason Elkin</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/JasonElkin/Emptinesss</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/JasonElkin/Emptiness</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageIconUrl>https://raw.githubusercontent.com/JasonElkin/Emptiness/main/docs/img/logo.png</PackageIconUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<RepositoryUrl>https://github.com/JasonElkin/Emptinesss</RepositoryUrl>
+		<RepositoryUrl>https://github.com/JasonElkin/Emptiness</RepositoryUrl>
 		<RepositoryType>Git</RepositoryType>
 		<PackageTags>umbraco umbraco-marketplace ModelsBuilder</PackageTags>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
