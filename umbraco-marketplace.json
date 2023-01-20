@@ -1,0 +1,17 @@
+{
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "AuthorDetails": {
+    "Name": "Jason Elkin",
+    "Description": "Umbraco MVP & Master, developer at Bump Digital.",
+    "Url": "https://github.com/JasonElkin",
+    "ImageUrl": "https://github.com/JasonElkin.png",
+    "SyncContributorsFromRepository": true
+  },
+  "Category": "Developer Tools",
+  "Description": "Nullable Property Value Converters for value types in Umbraco.",
+  "LicenseTypes": [ "Free" ],
+  "IssueTrackerUrl": "https://github.com/JasonElkin/Emptiness/issues",
+  "PackageType": "Package",
+  "Tags": ["nullable", "property value converter"],
+  "Title": "Emptiness"
+}
